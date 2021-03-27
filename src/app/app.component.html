@@ -1,4 +1,4 @@
-<div class="app-pagee">
+<div class="app-page">
   <div class="app-page__header">
     <h1 class="text-center">Main Page</h1>
 
@@ -14,24 +14,25 @@
   <button class="app-button" (click)="getPostDetails()">Retrieve Posts</button>
 </div>
 
-
-
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Title</th>
-    <th style="flex-wrap: wrap; max-width: 30%">Body</th>
-    <th>User Id</th>
-  </tr>
-  <tr *ngIf="arrPost?.Length > 0"></tr>
-  <ng-container *ngIf="!arrPost?.Length">
-    <tr *ngFor="let post of arrPost; let i = index">
-      <td>{{ post.id }}</td>
-      <td>{{ post.title }}</td>
-      <td style="flex-wrap: wrap; max-width: 30%">{{ post.body }}</td>
-      <td>{{ post.userId }}</td>
+<div class="app-page">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th style="flex-wrap: wrap; max-width: 20%">Body</th>
+      <th>User Id</th>
     </tr>
-  </ng-container>
-</table>
-
-{{ arrPost | json}}
+    <tr *ngIf="arrPost?.Length > 0"></tr>
+    <ng-container *ngIf="!arrPost?.Length">
+      <tr *ngFor="let post of arrPost; let i = index">
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td style="flex-wrap: wrap; max-width: 30%">{{ post.body }}</td>
+        <td>{{ post.userId }}</td>
+      </tr>
+    </ng-container>
+    <tr *ngIf="arrPost == null || arrPost.Length === 0">
+      <td colspan="4" class="text-center">No data to display!</td>
+    </tr>
+  </table>
+</div>
